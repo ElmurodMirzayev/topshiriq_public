@@ -1,0 +1,35 @@
+/* Карточки списков (задача, сотрудник), статус-бейджи и общие пилюли */
+.task-list{display:flex;flex-direction:column;gap:12px}
+
+/* Task Card */
+.task-card{background:var(--c-surface);border-radius:14px;padding:16px 18px;box-shadow:var(--c-shadow);border:1px solid var(--c-border);transition:transform .15s,box-shadow .15s;cursor:pointer}
+.task-card:active{transform:scale(.985);box-shadow:0 1px 2px rgba(15,23,42,.05)}
+.task-card-overdue{border-left:3px solid #e53935}
+.task-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px}
+.task-number{font-size:15px;font-weight:700}
+.task-status{font-size:12px;font-weight:600;padding:3px 10px;border-radius:8px}
+.status-new{background:#e3f2fd;color:#1565c0}.status-progress{background:#fff3e0;color:#e65100}
+.status-done{background:#e8f5e9;color:#2e7d32}.status-rejected{background:#ffebee;color:#c62828}
+.task-created-date{font-size:13px;color:var(--tg-theme-hint-color,#999);margin-bottom:12px}
+.task-name{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.35}
+.task-description{font-size:14px;color:var(--tg-theme-hint-color,#666);margin-bottom:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.task-deadline-row{padding-top:10px;border-top:1px solid rgba(0,0,0,.05)}
+.task-deadline-text{font-size:13px;font-weight:500;color:var(--tg-theme-hint-color,#888)}
+.deadline-overdue{color:#e53935;font-weight:600}
+
+/* Employee Card */
+.employee-card{background:var(--c-surface);border-radius:14px;padding:16px 18px;box-shadow:var(--c-shadow);border:1px solid var(--c-border);transition:transform .15s}
+.employee-card:active{transform:scale(.985)}.employee-inactive{opacity:.55}
+.employee-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.employee-name{font-size:16px;font-weight:600}
+.employee-status{font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px}
+.emp-active{background:#e8f5e9;color:#2e7d32}.emp-inactive{background:#ffebee;color:#c62828}
+.employee-detail{font-size:14px;color:var(--tg-theme-hint-color,#555);margin-bottom:4px}
+.employee-phone-line{margin-bottom:8px}
+.employee-meta{font-size:12px;color:var(--tg-theme-hint-color,#aaa);padding-top:8px;border-top:1px solid rgba(0,0,0,.05)}
+
+/* Badges */
+.badge-green{font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px;background:#e8f5e9;color:#2e7d32}
+.badge-orange{font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px;background:#fff3e0;color:#e65100}
+.badge-gray{font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px;background:#f5f5f5;color:#999}
+.badge-red{font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px;background:#ffebee;color:#c62828}

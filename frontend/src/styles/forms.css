@@ -1,0 +1,21 @@
+/* Формы: создание задачи/сотрудника, поля ввода, кнопки отправки */
+.form-container{display:flex;flex-direction:column;gap:20px;padding-bottom:20px}
+.form-info{padding:12px 16px;background:var(--tg-theme-secondary-bg-color,#f0f4f8);border-radius:10px}
+.form-info-text{font-size:14px;font-weight:600;color:var(--tg-theme-hint-color,#555)}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:14px;font-weight:600}
+.form-input,.form-textarea,.form-select{width:100%;padding:12px 14px;font-size:15px;border:1.5px solid var(--tg-theme-hint-color,#ddd);border-radius:10px;background:var(--tg-theme-secondary-bg-color,#fff);color:var(--tg-theme-text-color,#1a1a1a);outline:none;transition:border-color .2s}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--brand-blue)}
+.form-input-error{border-color:#e53935!important}
+.form-textarea{resize:vertical;min-height:100px}
+.form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.checkbox-group{display:flex;flex-wrap:wrap;gap:10px}
+.checkbox-label{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--tg-theme-secondary-bg-color,#f5f5f5);border-radius:10px;cursor:pointer;border:1.5px solid transparent}
+.checkbox-label:has(.checkbox-input:checked){background:var(--brand-blue-soft);border-color:var(--brand-blue)}
+.checkbox-input{width:18px;height:18px;accent-color:var(--brand-blue)}.checkbox-text{font-size:14px}
+.error-text{font-size:12px;color:#e53935;font-weight:500}
+.submit-error{padding:12px 16px;background:#ffebee;border-radius:10px;border:1px solid #ffcdd2}
+.submit-error p{font-size:14px;color:#c62828}
+.submit-btn{width:100%;padding:14px;font-size:16px;font-weight:600;color:#fff;background:var(--brand-blue);border:none;border-radius:12px;cursor:pointer}
+.submit-btn:active{background:var(--brand-blue-dark);transform:scale(.98)}
+.submit-btn:disabled{background:#b0bec5;cursor:not-allowed}
