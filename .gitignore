@@ -10,7 +10,6 @@ __v0_jsx-dev-runtime.ts
 .env*.local
 
 # Common ignores
-__pycache__/
 node_modules
 .next/
 .DS_Store
