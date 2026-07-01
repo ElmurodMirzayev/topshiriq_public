@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────────────────────────
+#  Telegram Mini App — полный запуск одной командой:
+#      docker compose up -d --build
+#
+#  Сервисы:
+#    backend — FastAPI (API), порт 8000 (виден только внутри Docker)
+#    bot     — Telegram-бот (aiogram, polling)
+#    web     — Caddy: раздаёт React + проксирует API + авто-HTTPS
+# ─────────────────────────────────────────────────────────────────
+
+services:
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    volumes:
+      # Код + база SQLite (tasks.db) + папка uploads хранятся на сервере
+      # и НЕ пропадают при перезапуске контейнера.
+      - ./backend:/app
+    expose:
+      - "8000"
+
+  bot:
+    build: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    volumes:
+      # Тот же код и та же база, что у backend (общий tasks.db).
+      - ./backend:/app
+    command: ["python", "bot.py"]
+    depends_on:
+      - backend
+
+  web:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      # Сохраняем полученный SSL-сертификат между перезапусками,
+      # чтобы не упереться в лимиты Let's Encrypt.
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

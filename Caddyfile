@@ -1,0 +1,32 @@
+# ─────────────────────────────────────────────────────────────────
+#  Caddy: автоматический HTTPS + reverse proxy
+#  Caddy сам получит бесплатный SSL-сертификат Let's Encrypt для
+#  этого домена и будет автоматически его продлевать.
+#
+#  ВАЖНО: домен ниже должен указывать (в DNS dynv6) на IP вашего
+#  сервера Kamatera, а порты 80 и 443 должны быть открыты.
+# ─────────────────────────────────────────────────────────────────
+
+topshiriqbot.dynv6.net {
+	# Сжатие ответов
+	encode gzip
+
+	# Разрешаем большие загрузки (видео до 500 МБ)
+	request_body {
+		max_size 550MB
+	}
+
+	# Запросы к API и загруженным файлам → в backend (FastAPI)
+	@backend path /api/* /uploads/*
+	handle @backend {
+		reverse_proxy backend:8000
+	}
+
+	# Все остальные запросы → статика React (SPA).
+	# try_files с фолбэком на index.html нужен для клиентской маршрутизации.
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

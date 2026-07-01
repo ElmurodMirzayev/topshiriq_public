@@ -1,0 +1,40 @@
+/* Базовые стили: токены темы, сброс, оболочка приложения, шапка, состояния загрузки/ошибки */
+:root{
+  /* Светло-голубая палитра в стиле TON / референса */
+  --brand-blue:#1c9ce8;        /* основной акцент (кнопки, активные табы) */
+  --brand-blue-dark:#0d82c9;   /* нажатое состояние */
+  --brand-blue-soft:#dbeefb;   /* мягкая голубая подложка чипов/пилюль */
+  --brand-text:#0f2a43;        /* тёмно-синий текст */
+  --brand-hint:#5b7892;        /* приглушённый синевато-серый */
+
+  --app-bg:#dcecf8;            /* общий фон приложения (светло-голубой) */
+  --c-surface:#f1f8fe;         /* поверхность карточек (почти белый с голубым) */
+  --c-border:rgba(28,156,232,.16);
+  --c-shadow:0 1px 2px rgba(15,42,67,.04),0 2px 6px rgba(15,42,67,.06);
+  /* Мягкий, но заметный индикатор "не сдан отчёт" */
+  --c-alert-text:#b42318;
+  --c-alert-bg:#fef3f2;
+  --c-alert-border:#fbd5d1;
+  --c-alert-accent:#d4503e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--app-bg);color:var(--brand-text);line-height:1.5;-webkit-font-smoothing:antialiased}
+.loading-screen,.error-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:16px}
+.spinner{width:36px;height:36px;border:3px solid rgba(0,0,0,.1);border-top:3px solid var(--brand-blue);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.app{max-width:100%;min-height:100vh}.page{min-height:100vh;display:flex;flex-direction:column}
+
+/* Header */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--c-surface);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--c-border);box-shadow:0 1px 3px rgba(15,42,67,.06)}
+.header-title{font-size:20px;font-weight:700}.create-title{font-size:18px}
+.header-badge{background:var(--brand-blue);color:#fff;font-size:12px;font-weight:600;padding:2px 8px;border-radius:12px}
+.back-btn{background:none;border:none;color:var(--brand-blue);font-size:16px;font-weight:500;cursor:pointer;padding:4px 0;white-space:nowrap}
+.back-btn:active{opacity:.6}
+.content{flex:1;padding:72px 16px 100px}
+.content-with-tabs{padding-bottom:160px}
+
+/* Empty/Error */
+.empty-container,.loading-container,.error-container{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center}
+.empty-icon{font-size:56px;margin-bottom:16px}.empty-text{font-size:18px;font-weight:600;margin-bottom:8px}
+.empty-subtext{font-size:14px;color:var(--tg-theme-hint-color,#999)}
+.retry-btn{margin-top:16px;padding:10px 24px;background:var(--brand-blue);color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer}
