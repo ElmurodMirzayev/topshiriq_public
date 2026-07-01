@@ -153,3 +153,36 @@ export interface XodimTask {
 export interface XodimTaskListResponse {
   tasks: XodimTask[];
 }
+
+// ─────────────────────────────── Статистика ─────────────────────────────
+// Скользящее окно от текущего момента (значения совпадают с backend PERIOD_DAYS).
+export type StatsPeriod = '1w' | '1m' | '2m' | '6m' | '1y';
+
+// Сотрудник в топе (по числу принятых отчётов за период).
+export interface StatsTopEmployee {
+  employee_id: number;
+  employee_name: string;
+  approved_count: number;
+  rework_count: number;
+}
+
+// Итоговые метрики за период (ответ /api/stats/summary).
+export interface StatsSummary {
+  total_tasks_created: number;
+  total_reports_submitted: number;
+  approved_count: number;
+  rework_count: number;
+  reported_count: number;
+  rework_rate: number;
+  avg_review_time_hours: number | null;
+  active_employees_count: number;
+  top_employees: StatsTopEmployee[];
+}
+
+// Точка динамики для графика (ответ /api/stats/timeline).
+export interface StatsTimelinePoint {
+  date: string;
+  submitted_count: number;
+  approved_count: number;
+  rework_count: number;
+}

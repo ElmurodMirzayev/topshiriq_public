@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from app.config import settings
 from app.database.init_db import init_database
-from app.routers import auth, tasks, admin, xodim
+from app.routers import auth, tasks, admin, xodim, stats
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -28,6 +28,7 @@ app.include_router(auth.router)
 app.include_router(tasks.router)
 app.include_router(admin.router)
 app.include_router(xodim.router)
+app.include_router(stats.router)
 
 @app.get("/")
 def root(): return {"status": "ok"}

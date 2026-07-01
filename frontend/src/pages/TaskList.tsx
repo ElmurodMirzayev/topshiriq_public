@@ -46,7 +46,7 @@ function TaskList() {
         <h1 className="header-title">Барча топшириқлар</h1>
         {total > 0 && <span className="header-badge">{total}</span>}
       </div>
-      <div className={`content ${isAdmin ? 'content-with-tabs' : ''}`}>
+      <div className={`content ${isAdmin || isBoshliq ? 'content-with-tabs' : ''}`}>
         {loading && (
           <div className="loading-container">
             <div className="spinner" />

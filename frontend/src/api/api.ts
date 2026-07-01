@@ -5,6 +5,9 @@ import type {
   CreateTaskPayload,
   EmployeeListResponse,
   EmployeeReport,
+  StatsPeriod,
+  StatsSummary,
+  StatsTimelinePoint,
   Task,
   TaskDetail,
   TaskListResponse,
@@ -60,6 +63,15 @@ export async function approveReport(taskId: number, empId: number): Promise<unkn
 
 export async function reworkReport(taskId: number, empId: number, comment: string): Promise<unknown> {
   return (await api.post(`/api/tasks/${taskId}/report/${empId}/rework`, { comment })).data;
+}
+
+// ─────────────────────── Stats (Boshliq/Admin) ──────────────────────
+export async function getStatsSummary(period: StatsPeriod): Promise<StatsSummary> {
+  return (await api.get<StatsSummary>('/api/stats/summary', { params: { period } })).data;
+}
+
+export async function getStatsTimeline(period: StatsPeriod): Promise<StatsTimelinePoint[]> {
+  return (await api.get<StatsTimelinePoint[]>('/api/stats/timeline', { params: { period } })).data;
 }
 
 // ───────────────────────── Employees (Admin) ────────────────────────

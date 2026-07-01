@@ -6,7 +6,7 @@
 .tab-active{color:var(--brand-blue);font-weight:700}
 
 /* FAB */
-.fab{position:fixed;bottom:24px;right:20px;width:56px;height:56px;border-radius:50%;background:var(--brand-blue);color:#fff;font-size:28px;font-weight:300;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(28,156,232,.4);display:flex;align-items:center;justify-content:center;z-index:50;transition:transform .15s}
+.fab{position:fixed;bottom:calc(72px + env(safe-area-inset-bottom));right:20px;width:56px;height:56px;border-radius:50%;background:var(--brand-blue);color:#fff;font-size:28px;font-weight:300;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(28,156,232,.4);display:flex;align-items:center;justify-content:center;z-index:110;transition:transform .15s}
 .fab:active{transform:scale(.9)}
 
 /* Modal */

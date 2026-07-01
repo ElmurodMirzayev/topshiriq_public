@@ -1,0 +1,42 @@
+/* Раздел «Статистика» (boshliq/admin). Использует токены из base.css,
+   новую цветовую палитру не вводим. */
+
+/* Переключатели периода — паттерн активного таба. */
+.stats-periods{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.stats-period-btn{flex:1 1 auto;min-width:64px;padding:8px 10px;font-size:13px;font-weight:600;color:var(--brand-hint);background:var(--c-surface);border:1px solid var(--c-border);border-radius:10px;cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.stats-period-btn:active{transform:scale(.97)}
+.stats-period-active{color:#fff;background:var(--brand-blue);border-color:var(--brand-blue)}
+
+/* Мета-строка под карточками метрик. */
+.stats-meta-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:12px;font-weight:600;color:var(--brand-hint)}
+
+/* График */
+.stats-chart{width:100%}
+.stats-chart-svg{width:100%;height:auto;display:block}
+.stats-chart-axis{stroke:var(--c-border);stroke-width:1}
+.stats-bar{transition:height .2s}
+.bar-submitted{fill:var(--brand-blue)}
+.bar-approved{fill:#2e7d32}
+.bar-rework{fill:var(--c-alert-text)}
+.stats-chart-xlabel{font-size:20px;fill:var(--brand-hint)}
+.stats-chart-empty{display:flex;align-items:center;justify-content:center;padding:40px 12px}
+.stats-chart-empty-text{font-size:13px;color:var(--brand-hint)}
+
+/* Легенда графика */
+.stats-legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:12px;font-size:12px;color:var(--brand-hint)}
+.stats-legend-item{display:flex;align-items:center;gap:6px}
+.stats-legend-dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.legend-submitted{background:var(--brand-blue)}
+.legend-approved{background:#2e7d32}
+.legend-rework{background:var(--c-alert-text)}
+
+/* Топ ходимлар */
+.stats-top-list{display:flex;flex-direction:column}
+.stats-top-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+.stats-top-row:last-child{border-bottom:none}
+.stats-top-rank{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--brand-blue);background:var(--brand-blue-soft);border-radius:50%}
+.stats-top-name{flex:1;font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stats-top-counts{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.stats-top-approved{font-size:13px;font-weight:700;color:#fff;background:#2e7d32;border-radius:7px;padding:2px 9px}
+.stats-top-rework{font-size:13px;font-weight:700;color:#fff;background:var(--c-alert-text);border-radius:7px;padding:2px 9px}
+.stats-empty-text{font-size:13px;color:var(--brand-hint);text-align:center;padding:12px 0}

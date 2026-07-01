@@ -16,3 +16,16 @@ export function formatFileSize(bytes: number): string {
     ? `${(bytes / 1048576).toFixed(1)} MB`
     : `${Math.max(1, Math.round(bytes / 1024))} KB`;
 }
+
+// Время в часах → "N соат" (до суток) или "N кун N соат" (от суток).
+// null/undefined (нет данных) → "—".
+export function formatReviewTime(hours?: number | null): string {
+  if (hours == null) return '—';
+  if (hours < 24) {
+    const h = Math.round(hours * 10) / 10;
+    return `${h} соат`;
+  }
+  const days = Math.floor(hours / 24);
+  const rem = Math.round(hours - days * 24);
+  return rem > 0 ? `${days} кун ${rem} соат` : `${days} кун`;
+}

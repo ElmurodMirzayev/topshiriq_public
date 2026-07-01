@@ -2,7 +2,9 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import AdminTabs from './components/AdminTabs';
+import BoshliqTabs from './components/BoshliqTabs';
 import TaskList from './pages/TaskList';
+import Stats from './pages/Stats';
 import TaskCreate from './pages/TaskCreate';
 import TaskDetail from './pages/TaskDetail';
 import ReportView from './pages/ReportView';
@@ -17,7 +19,10 @@ import PhoneVerify from './pages/PhoneVerify';
 function BoshliqRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<TaskList />} />
+      <Route element={<BoshliqTabs />}>
+        <Route path="/" element={<TaskList />} />
+        <Route path="/stats" element={<Stats />} />
+      </Route>
       <Route path="/tasks/new" element={<TaskCreate />} />
       <Route path="/tasks/:taskId" element={<TaskDetail />} />
       <Route path="/tasks/:taskId/report/:employeeId" element={<ReportView />} />
@@ -34,6 +39,7 @@ function AdminRoutes() {
         <Route path="/" element={<TaskList />} />
         <Route path="/employees" element={<EmployeeList />} />
         <Route path="/employees/new" element={<EmployeeCreate />} />
+        <Route path="/stats" element={<Stats />} />
       </Route>
       <Route path="/tasks/:taskId" element={<TaskDetail />} />
       <Route path="/tasks/:taskId/report/:employeeId" element={<ReportView />} />

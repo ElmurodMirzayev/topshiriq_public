@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
-// Лейаут с нижними вкладками админа. Оборачивает страницы «Топшириқлар» и
-// «Ходимлар», на которых вкладки должны быть видны (но не на деталях/отчётах).
-function AdminTabs() {
+// Лейаут с нижними вкладками руководителя (boshliq). Аналогичен AdminTabs:
+// оборачивает список поручений и статистику; на деталях/создании/отчётах
+// вкладки не показываются (эти маршруты вне лейаута в App.tsx).
+function BoshliqTabs() {
   return (
     <>
       <Outlet />
@@ -16,12 +17,6 @@ function AdminTabs() {
           📋 Топшириқлар
         </NavLink>
         <NavLink
-          to="/employees"
-          className={({ isActive }) => `tab-btn ${isActive ? 'tab-active' : ''}`}
-        >
-          👥 Ходимлар
-        </NavLink>
-        <NavLink
           to="/stats"
           className={({ isActive }) => `tab-btn ${isActive ? 'tab-active' : ''}`}
         >
@@ -32,4 +27,4 @@ function AdminTabs() {
   );
 }
 
-export default AdminTabs;
+export default BoshliqTabs;
